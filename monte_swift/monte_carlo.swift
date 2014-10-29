@@ -2,13 +2,12 @@ type file;
 
 app (file ret) reduce(file inps[], int _n_iter)
 {
-	calc_pi _n_iter @filenames(inps) stdout=@filename(ret);
-
+	_reduce _n_iter @filenames(inps) stdout=@filename(ret);
 }
 
 app (file out) call(int _iter, int i)
 {
-	monte_carlo_c _iter i stdout = @filename(out);
+	random_gen _iter i stdout = @filename(out);
 }
 
 int tot_per_proc = @toInt(@arg("tot_per_proc", "1000"));
